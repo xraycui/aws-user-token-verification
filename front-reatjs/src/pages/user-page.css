@@ -1,0 +1,13 @@
+section button {
+   margin: 20px
+}
+
+.userid {
+    width: 300px;
+    background-color: lightgray;
+}
+
+.user-profile {
+    display: flex;
+    flex-direction: column;
+}

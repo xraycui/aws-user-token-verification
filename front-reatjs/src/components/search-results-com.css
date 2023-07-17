@@ -1,0 +1,9 @@
+.table-dark {
+    background-color: black;
+    color: white;
+  }
+  
+  .table-dark th,
+  .table-dark td {
+    border-color: white;
+  }
