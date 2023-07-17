@@ -3,7 +3,6 @@ import { ApiGateway } from './ApiGateway'
 import { Lambda } from './Lambda'
 import { Construct } from 'constructs';
 import * as stepfunctions from 'aws-cdk-lib/aws-stepfunctions';
-import * as tasks from 'aws-cdk-lib/aws-stepfunctions-tasks';
 import * as iam from 'aws-cdk-lib/aws-iam';
 
 export class BackendAwsStack extends cdk.Stack {
@@ -23,17 +22,15 @@ export class BackendAwsStack extends cdk.Stack {
     api.addIntegration('DELETE', '/delete', deleteUserLambda)
 
     // step function
-    const state1 = new stepfunctions.Pass(this, 'State1');
-    const state2 = new stepfunctions.Pass(this, 'State2');
-
-    const definition = state1.next(state2);
+    const verifyUserTokenLambda = new Lambda(this, 'verifyUserToken')
+    const definition = require('../src/step-function/definition')
 
     const role = new iam.Role(this, 'VerifyTokenStateMachineRole', {
       assumedBy: new iam.ServicePrincipal('states.amazonaws.com'),
     });
 
     const verifyTokenStateMachine = new stepfunctions.StateMachine(this, 'VerifyTokenStateMachine', {
-      definition: definition,
+      definitionBody: stepfunctions.DefinitionBody.fromChainable(definition),
       role: role,
     });
   }
