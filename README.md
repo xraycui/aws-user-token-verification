@@ -7,9 +7,11 @@ Current this project implements 2 use cases
     - root
         README.md
         - backend-aws 
-            - lib (provision aws service using CDK)
-            - src/lambds
+            - lib 
+                - backend-aws-stack.ts (provision apigw/lambda/stepfunction)
+            - src/lambds 
             - src/stepFunction
+                - definition.ts (define verifyUserTokenStateMachine)
         - front-reatjs
             - src/components (reusable component)
             - src/pages 
