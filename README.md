@@ -1,9 +1,9 @@
 # Description 
-Current this project implement 2 use cases
+Current this project implements 2 use cases
     . Usecase 1: CRUD user prifile : UI(reactJS) -> API Gateway -> Lambdas -> S3
     . Usecase 2: Search and verify user token workflow: AWS Step Function -> Lambdas -> S3
 
-# Floder Structures
+# Floder Structure
     - root
         README.md
         - backend-aws 
