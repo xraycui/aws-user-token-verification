@@ -28,9 +28,12 @@ export const definitionJson = {
       "Type": "Choice",
       "Choices": [
         {
+          "Variable": "$.response",
+          "StringEquals": "OK",
           "Next": "verifyUserToken"
         }
-      ]
+      ],
+      "Default": "Fail"
     },
     "verifyUserToken": {
       "Type": "Task",
@@ -59,6 +62,10 @@ export const definitionJson = {
       "Type": "Choice",
       "Choices": [
         {
+          "Not": {
+            "Variable": "$.response",
+            "StringEquals": "OK"
+          },
           "Next": "Success"
         }
       ],

@@ -1,8 +1,13 @@
 # Description 
 This package includes 2 use cases
 
-## Usecase 1: CRUD user prifile : UI(reactJS) -> API Gateway -> Lambdas -> S3
-## Usecase 2: Search and verify user token workflow: AWS Step Function -> Lambdas -> S3
+## Usecase 1: CRUD user profile
+
+UI(reactJS) -> API Gateway -> Lambdas -> S3
+
+## Usecase 2: Search and verify user token workflow: 
+
+AWS Step Function -> Lambdas -> S3
 
 # Floder Structure
     - root
