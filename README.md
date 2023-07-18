@@ -25,8 +25,10 @@ AWS Step Function -> Lambdas -> S3
     - Usecase 1: 
         - Coding (done)
         - Debuging (wip)
-        - Unit test (not start yet)
-        - Automation test (not start yet)
+        - Unit test (wip)
+        - Automation test (wip)
     - Usecase 2:
-        - Coding (wip)
+        - Coding (done)
+        - Debuging (wip)
+        - Unit test (wip)
     - CI/CD (not start yet)
