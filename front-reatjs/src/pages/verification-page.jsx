@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import './verification-page.css'
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, json } from "react-router-dom";
 
 const Verification = () => {
     const [inputToken, setInputToken] = useState('')
@@ -14,9 +14,23 @@ const Verification = () => {
     }
 
     const handleClickVerifyButton = () => {
-        console.log('click verify button')
-        const token = '12345'
-        const verifyResult = true
+        let verifyResult
+        const userToVerify = {
+            id: user.id,
+            firstName,
+            lastName,
+            token: inputToken
+          }
+      
+          axios.get(`${API_GATEWAY}verify`, userToVerify)
+          .then(response => {
+            verifyResult = JSON.parse(response).body.result
+          })
+          .catch(error => {
+            // Handle error
+            console.error('Error:', error);
+          });
+    
         verifyResult ? setMessage(`[Verification Result] ${token} is a valid token`) : setMessage(`[Verification Result] ${token} is not a valid token`) 
     }
 

@@ -21,7 +21,7 @@ const User = () => {
     const header = {
       "Content-Type": "application/json"
     }
-    axios.post(`${API_GATEWAY}post`, newUser, {header})
+    axios.post(`${API_GATEWAY}create`, newUser, {header})
     .then(response => {
       // Handle success
       console.log('Response:', response.data);

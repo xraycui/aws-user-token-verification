@@ -15,14 +15,16 @@ export class BackendAwsStack extends cdk.Stack {
     const getUserLambda = new Lambda(this, 'getUser')
     const updateUserLambda = new Lambda(this, 'updateUser')
     const deleteUserLambda = new Lambda(this, 'deleteUser')
-    
-    api.addIntegration('POST', '/post', createUserLambda)
+    const searchUserLambda = new Lambda(this, 'serchUser')
+    const verifyUserTokenLambda = new Lambda(this, 'verifyUserToken')
+   
+    api.addIntegration('POST', '/create', createUserLambda)
     api.addIntegration('GET', '/get', getUserLambda)
     api.addIntegration('PUT', '/update', updateUserLambda)
     api.addIntegration('DELETE', '/delete', deleteUserLambda)
+    api.addIntegration('GET', '/verify', verifyUserTokenLambda)
 
     // step function
-    const verifyUserTokenLambda = new Lambda(this, 'verifyUserToken')
     const definition = require('../src/step-function/definition')
 
     const role = new iam.Role(this, 'VerifyTokenStateMachineRole', {
